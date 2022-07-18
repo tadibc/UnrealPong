@@ -23,7 +23,7 @@ APongBall::APongBall()
 	StaticMeshComponent->SetSimulatePhysics(true);
 	StaticMeshComponent->SetCollisionEnabled(ECollisionEnabled::QueryAndPhysics);
 	StaticMeshComponent->SetEnableGravity(false);
-	StaticMeshComponent->SetConstraintMode(EDOFMode::XYPlane);
+	//StaticMeshComponent->SetConstraintMode(EDOFMode::XYPlane);
 
 	BoxComponent = CreateDefaultSubobject<UBoxComponent>(TEXT("Collision"));
 	BoxComponent->SetupAttachment(StaticMeshComponent);
@@ -37,7 +37,7 @@ APongBall::APongBall()
 void APongBall::BeginPlay()
 {
 	Super::BeginPlay();
-
+	StaticMeshComponent->SetConstraintMode(EDOFMode::XYPlane);
 	SetReplicateMovement(true);
 
 	if (BallMesh)
